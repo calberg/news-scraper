@@ -15,15 +15,15 @@ router.get("/", function(req, res) {
     
 });
 
-// A GET route for scraping the NPR website
+// A GET route for scraping the San Diego Tribune website
 router.post("/scrape", function(req, res) {
 // First, we grab the body of the html with axios
-    axios.get("https://www.sandiegouniontribune.com/news").then(function(response) {
+    axios.get("https://www.sandiegouniontribune.com/latest").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
         var $ = cheerio.load(response.data);
 
         // Now, we grab every h2 within an article tag, and do the following:
-        $("ListK-items-item").each(function(i, element) {
+        $("ListL-items-item").each(function(i, element) {
             // Save an empty result object
             var result = {};
 

@@ -38,13 +38,13 @@ console.log("It's working: "+ MONGODB_URI);
 // A GET route for scraping the echoJS website
 app.get("/scrape", function(req, res) {
   // First, we grab the body of the html with axios
-  axios.get("https://www.sandiegouniontribune.com/news").then(function(response) {
+  axios.get("https://www.sandiegouniontribune.com/latest").then(function(response) {
     // Then, we load that into cheerio and save it to $ for a shorthand selector
     var $ = cheerio.load(response.data);
     console.log("This is the response: "+ response.data.substring(0, 50));
 
     // Now, we grab every h2 within an article tag, and do the following:
-    $("ListK-items-item > a").each(function(i, element) {
+    $("ListI-items-item > a").each(function(i, element) {
       console.log("This is the link's `i`:" + i);
       console.log("This is the link's` element: " + element);
       // Save an empty result object
